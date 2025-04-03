@@ -16,7 +16,8 @@ jobs:
       with:
         username: leonardlin
         password: ${{ secrets.DOCKER_PAT }}
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag runpodtest:latest
-    - name: publish
-      run: docker push leonardlin/runpodtest:latest
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+        push: true
+        tags: leonardlin/runpodtest:latest
